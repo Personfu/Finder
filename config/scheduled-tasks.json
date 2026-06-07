@@ -1,0 +1,4 @@
+{
+  "_comment": "Finder has no scheduled tasks. The original plan was to run /finder:hunt nightly in Cowork, but Cowork's network proxy blocks the job-board APIs (Greenhouse, Lever, RemoteOK, HN/Algolia) and the 'Additional allowed domains' setting is non-functional today (open bugs #38984, #30112, #37970). Hunt is run on demand from the desktop CLI. File kept (empty) so future scheduled tasks have a home if/when one becomes appropriate.",
+  "tasks": []
+}

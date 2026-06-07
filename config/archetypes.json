@@ -1,0 +1,122 @@
+{
+  "_doc": "Archetype definitions for scripts/resume_compose.py. An ARCHETYPE is a target-role lens: it picks which tagged bullets surface (bullets carry `archetypes=` tags in data/skill_library/*.md), what one-line intro tops the resume, and the order competency domains appear in the Technical Skills block. ADD YOUR OWN: copy any block under `archetypes` (e.g. give yourself `data-scientist` or `chef`), write its `intro` and `domain_order`, add matching `domains` entries if you need new skill categories, then tag your skill_library bullets with `archetypes=<your-archetype>` and run the composer with `--role-archetype <your-archetype>`. No code edit required. Unknown/partial archetypes still compose: a missing intro falls back to `intro_default` and a missing domain_order falls back to `domain_order_default`. This shipped example uses a deliberately broad fictional persona (James Bond) to show one career tailored into very different jobs, gag roles (protective-driver, luxury-hospitality) included.",
+
+  "default_archetype": "close-protection",
+
+  "intro_default": "Field-tested operative with two decades of service spanning protection, intelligence, and crisis response. Detail per role below.",
+
+  "domain_order_default": [
+    "protective-ops", "surveillance", "firearms-tactics", "crisis-negotiation",
+    "tactical-driving", "intelligence-analysis", "leadership",
+    "languages-diplomacy", "maritime-ops", "gastronomy-luxury"
+  ],
+
+  "domains": {
+    "protective-ops": {
+      "label": "Close Protection & Physical Security",
+      "skills": "Executive and close protection, principal protection, threat and risk assessment, advance work, route and venue planning, close-quarters defense, hostile-environment operations, asset protection"
+    },
+    "surveillance": {
+      "label": "Surveillance & Counter-Surveillance",
+      "skills": "Covert surveillance, counter-surveillance, mobile and static observation, pattern-of-life analysis, technical surveillance countermeasures, tradecraft, source development"
+    },
+    "firearms-tactics": {
+      "label": "Firearms & Tactical Training",
+      "skills": "Expert marksmanship (pistol and rifle), tactical firearms, weapons handling and safety, close-quarters battle (CQB), unarmed combat, edged-weapons defense, range instruction"
+    },
+    "tactical-driving": {
+      "label": "Advanced & Tactical Driving",
+      "skills": "Advanced and evasive driving, high-performance and protective driving, anti-ambush maneuvers, motorcade operations, motorcycle and armored-vehicle operation, post-incident vehicle recovery"
+    },
+    "languages-diplomacy": {
+      "label": "Languages & Diplomacy",
+      "skills": "Fluent French, German, Italian, and Russian; cross-cultural negotiation, diplomatic protocol, liaison with foreign governments and agencies, VIP and dignitary engagement"
+    },
+    "crisis-negotiation": {
+      "label": "Crisis & Negotiation",
+      "skills": "Hostage and crisis negotiation, high-stakes bargaining, de-escalation, incident command under pressure, contingency planning, decisive action on incomplete information"
+    },
+    "intelligence-analysis": {
+      "label": "Intelligence & Investigations",
+      "skills": "Intelligence collection and analysis, source handling, covert investigations, evidence recovery, elicitation and interview, threat reporting, all-source assessment"
+    },
+    "gastronomy-luxury": {
+      "label": "Hospitality & Connoisseurship",
+      "skills": "Sommelier-level wine and spirits knowledge, fine-dining service, luxury hospitality, event hosting, etiquette and protocol, bespoke tailoring, discreet high-net-worth client relations"
+    },
+    "maritime-ops": {
+      "label": "Maritime & Aviation Operations",
+      "skills": "Naval command, maritime navigation, combat diving and scuba operations, small-boat handling, helicopter and fixed-wing operation, logistics and crew leadership"
+    },
+    "leadership": {
+      "label": "Leadership & Team Command",
+      "skills": "Field team command, mission planning, training and mentorship, cross-agency coordination, executive briefing, operational reporting, personnel development"
+    }
+  },
+
+  "archetypes": {
+    "close-protection": {
+      "_label": "Close Protection Officer / Executive Protection",
+      "intro": "Career field operative with two decades protecting principals and assets in hostile environments worldwide. Royal Navy Commander turned senior intelligence officer, trained in close-quarters defense, threat assessment, and protective driving. Holds the highest field clearance, speaks four languages, and has stayed calm under fire across more than forty high-risk operations on five continents.",
+      "domain_order": [
+        "protective-ops", "surveillance", "firearms-tactics", "crisis-negotiation",
+        "tactical-driving", "intelligence-analysis", "leadership",
+        "languages-diplomacy", "maritime-ops", "gastronomy-luxury"
+      ]
+    },
+    "corporate-security-director": {
+      "_label": "Director of Corporate Security / CSO",
+      "intro": "Security leader with 20 years directing protection, risk, and crisis response for high-value targets. Commanded multi-person field teams at the Secret Intelligence Service and ran regional operations for Universal Exports across three continents. Turns frontline operational experience into board-ready risk strategy, vendor oversight, and round-the-clock incident command.",
+      "domain_order": [
+        "leadership", "protective-ops", "crisis-negotiation", "intelligence-analysis",
+        "surveillance", "firearms-tactics", "languages-diplomacy", "tactical-driving",
+        "maritime-ops", "gastronomy-luxury"
+      ]
+    },
+    "field-investigations": {
+      "_label": "Investigator / Field Operative",
+      "intro": "Investigator and field operative with 20 years gathering intelligence and closing cases others could not. Ran covert surveillance, source development, and evidence recovery for the Secret Intelligence Service across more than forty operations. Reads a room and a balance sheet with equal speed, speaks four languages, and is trained to surface the truth under pressure.",
+      "domain_order": [
+        "intelligence-analysis", "surveillance", "protective-ops", "crisis-negotiation",
+        "languages-diplomacy", "firearms-tactics", "leadership", "tactical-driving",
+        "maritime-ops", "gastronomy-luxury"
+      ]
+    },
+    "diplomatic-liaison": {
+      "_label": "Diplomatic Security / Liaison",
+      "intro": "Diplomatic operator with 20 years brokering trust between governments, agencies, and private interests. Fluent in French, German, Italian, and Russian; negotiated hostage releases, defected sources, and high-stakes settlements without firing a shot. Equally at ease briefing a minister, a board, or a card table where the stakes ran into the millions.",
+      "domain_order": [
+        "languages-diplomacy", "crisis-negotiation", "leadership", "intelligence-analysis",
+        "protective-ops", "surveillance", "gastronomy-luxury", "firearms-tactics",
+        "tactical-driving", "maritime-ops"
+      ]
+    },
+    "intelligence-analyst": {
+      "_label": "Intelligence Analyst",
+      "intro": "Intelligence professional with 20 years turning fragmentary field signals into decisions leadership could act on. Built and ran source networks, pattern-of-life surveillance, and threat assessments for the Secret Intelligence Service across five continents. Speaks four languages, trained in counter-surveillance, and trusted to brief principals while the picture was still incomplete.",
+      "domain_order": [
+        "intelligence-analysis", "surveillance", "languages-diplomacy", "crisis-negotiation",
+        "protective-ops", "leadership", "firearms-tactics", "tactical-driving",
+        "maritime-ops", "gastronomy-luxury"
+      ]
+    },
+    "protective-driver": {
+      "_label": "Executive Protective Driver / Precision Driver",
+      "intro": "Protective driver and vehicle-operations specialist with 20 years moving principals through hostile traffic, tail pursuits, and ambush conditions intact. Certified in advanced, evasive, and high-performance driving across saloon cars, motorcycles, and armored vehicles. Field-tested under live fire: never lost a passenger, rarely lost a tail, and returned most of the vehicles in serviceable condition.",
+      "domain_order": [
+        "tactical-driving", "protective-ops", "surveillance", "crisis-negotiation",
+        "firearms-tactics", "maritime-ops", "leadership", "intelligence-analysis",
+        "languages-diplomacy", "gastronomy-luxury"
+      ]
+    },
+    "luxury-hospitality": {
+      "_label": "Luxury Brand Ambassador / Sommelier / Hospitality",
+      "intro": "Connoisseur and hospitality professional with 20 years entertaining at the highest level of international society. Speaks four languages with a discerning command of wine, spirits, fine dining, and tailoring honed across the world's grand hotels, casinos, and embassies. Reads guests instantly, defuses tension with a word, and curates an experience people remember for years.",
+      "domain_order": [
+        "gastronomy-luxury", "languages-diplomacy", "leadership", "crisis-negotiation",
+        "protective-ops", "intelligence-analysis", "surveillance", "tactical-driving",
+        "firearms-tactics", "maritime-ops"
+      ]
+    }
+  }
+}

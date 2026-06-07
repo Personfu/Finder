@@ -1,0 +1,14 @@
+.DS_Store
+.claude/
+*.tmp
+*.log
+.env
+.env.*
+config/local.json
+tmp/
+data/tracker.json
+data/canon.json
+applications/
+.claude-plugin/.cache/
+__pycache__/
+*.pyc

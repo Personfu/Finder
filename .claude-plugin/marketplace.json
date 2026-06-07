@@ -1,0 +1,22 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "finder",
+  "description": "Marketplace for the Finder automation plugin",
+  "owner": {
+    "name": "SamG0ld"
+  },
+  "plugins": [
+    {
+      "name": "finder",
+      "description": "Automated remote job hunt + tailoring pipeline. Evening hunt surfaces ranked candidates; CLI skills walk decisions, draft markdown packets, and (on desktop CLI) publish to Google Docs + tracker Sheet.",
+      "author": {
+        "name": "SamG0ld"
+      },
+      "category": "productivity",
+      "source": {
+        "source": "github",
+        "repo": "SamG0ld/Finder"
+      }
+    }
+  ]
+}

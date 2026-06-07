@@ -1,0 +1,235 @@
+{
+  "_comment": "EXAMPLE fit model for the Finder hunt. This is meant to be edited: it ships themed for the shipped example persona (James Bond — close protection / executive protection / field intelligence) so the fit model and the example resume tell one coherent story. Every bucket, comp floor, location tier, exclude rule, and target company below is a knob you replace with your own. See README 'Tuning the fit model'. NOTE: physical-security and close-protection roles are sparsely posted on the tech-oriented ATS boards (Greenhouse/Lever/Ashby/Workable) that the seed list pulls from, so this themed example is illustrative of the scoring machinery rather than a high-yield live search — swap in the boards and keywords for YOUR field to get real results. The fit model (which jobs to surface) is independent of the resume canon in data/canon.json (how your resume reads).",
+  "comp_preferred_floor":  { "base_usd": 120000, "total_usd": 160000 },
+  "comp_acceptable_floor": { "base_usd": 95000, "requires": ["fully_remote"] },
+  "comp_high_signal":      {
+    "_comment": "Roles whose comp_high clears this floor bypass the thin-signal filter — surface extremely-high-comp roles even when the JD doesn't pop with your keywords (useful if you're open to growing into adjacent senior roles where your skills aren't title-exact). Still requires SOME positive skill total > 0.",
+    "total_usd": 300000
+  },
+
+  "skill_buckets": {
+    "proven": {
+      "weight": 5,
+      "_comment": "Things you have demonstrably done at scale. Hits here count strongest. Replace with the terms tied to YOUR title-bearing experience.",
+      "keywords": [
+        "close protection", "close protection officer", "cpo",
+        "executive protection", "ep agent", "protective services",
+        "principal protection", "vip protection", "high net worth protection",
+        "threat assessment", "risk assessment", "advance work", "advance planning",
+        "route planning", "venue security", "residential security",
+        "surveillance", "counter-surveillance", "surveillance detection",
+        "protective driving", "evasive driving", "security driver",
+        "firearms", "tactical firearms", "weapons handling", "marksmanship",
+        "hostile environment", "hostile environment awareness",
+        "crisis management", "incident command",
+        "field intelligence", "covert operations", "tradecraft"
+      ]
+    },
+    "adjacent": {
+      "weight": 3,
+      "_comment": "Wheelhouse, but less title-bearing in your history. Strong matches still surface as Solid Fit.",
+      "keywords": [
+        "security management", "security manager", "security operations",
+        "global security operations center", "gsoc", "soc operator",
+        "corporate security", "physical security", "event security",
+        "travel security", "travel risk management", "duty of care",
+        "intelligence analysis", "open source intelligence", "osint",
+        "investigations", "field investigations", "due diligence",
+        "maritime security", "anti-piracy", "vessel security",
+        "emergency response", "crisis response", "business continuity",
+        "security consulting", "security risk consultant",
+        "asset protection", "loss prevention investigations"
+      ]
+    },
+    "aspirational": {
+      "weight": 2,
+      "_comment": "Trajectory targets — the roles you're growing toward. Boosts but never wins on its own.",
+      "keywords": [
+        "director of security", "head of security", "head of protective services",
+        "chief security officer", "cso", "regional security manager",
+        "global security lead", "head of executive protection",
+        "security program manager", "country security manager",
+        "intelligence director", "head of intelligence"
+      ]
+    },
+    "weak": {
+      "weight": -1,
+      "_comment": "Areas you are light on. Doesn't disqualify; just dampens fit confidence.",
+      "keywords": [
+        "cybersecurity required", "soc analyst required", "siem required",
+        "penetration testing required", "network security required",
+        "programming required", "python required", "software development required",
+        "cissp required", "incident response (cyber) required",
+        "cloud security required", "devsecops required"
+      ]
+    }
+  },
+
+  "_exclude_hard_doc": "Literal words/phrases — auto-wrapped in word boundaries by the scorer. 'intern' won't match 'internal'. For regex flexibility (alternation, optional separators), use exclude_hard_regex below.",
+  "exclude_hard_words": [
+    "junior",
+    "intern",
+    "internship",
+    "trainee",
+    "unarmed guard",
+    "security officer (unarmed)",
+    "part-time only",
+    "volunteer"
+  ],
+  "exclude_hard_regex": [
+    "entry.?level",
+    "minimum\\s+wage",
+    "no\\s+experience\\s+(required|necessary)",
+    "zero.?hour"
+  ],
+
+  "_exclude_titles_doc": "Substring match against the title only. Catches sales/PM/marketing/recruiting roles whose JDs hit your keywords because they sell products in your space. Be conservative — a job family like 'security engineer' may include legitimate positions, so it is intentionally NOT here.",
+  "exclude_titles": [
+    "sales",
+    "account executive",
+    "account manager",
+    "business development",
+    "customer success",
+    "customer support",
+    "product manager",
+    "product marketing",
+    "marketing manager",
+    "recruiter",
+    "talent acquisition",
+    "people operations",
+    "human resources",
+    "executive assistant",
+    "office manager",
+    "security software engineer",
+    "security engineer",
+    "cybersecurity analyst",
+    "soc analyst",
+    "alarm technician",
+    "installation technician",
+    "dispatcher",
+    "receptionist",
+    "facilities coordinator",
+    "general counsel",
+    "paralegal",
+    "writer",
+    "designer"
+  ],
+
+  "location_filters": {
+    "_comment": "Tier-based location preferences — EDIT THESE TO YOUR OWN. T1=surface as scored, no tag (your home metros + fully remote). T2=surface as scored, tagged [RELO]. T3=surface only if total comp >= comp_relo_floor.total_usd, tagged [RELO + HIGH COMP]. T4=hard exclude. A posting's tier is the BEST (lowest-#) tier across all listed location substrings, so a role offering two cities takes the better tier. Default for an unrecognized city = T3. Patterns are case-insensitive substring matches on each location chunk (split on |, ;, /). The example lists below are themed to the persona's home base (London); trim or extend freely.",
+    "tier1_hub_patterns": ["remote", "london", "united kingdom", "england"],
+    "tier2_hub_patterns": ["manchester", "birmingham", "edinburgh", "glasgow", "bristol", "leeds", "cardiff"],
+    "tier2_international_patterns": [
+      "_comment_only — example 'willing to relocate' regions for a UK-based principal-protection professional: Ireland, Western/Central Europe, Gulf protective-services hubs. Match on country name OR major city. Edit to match where you would actually move.",
+      "ireland", "dublin", "cork", "belfast",
+      "france", "paris", "monaco", "nice", "cannes",
+      "switzerland", "geneva", "zurich", "zürich",
+      "germany", "berlin", "munich", "frankfurt",
+      "spain", "madrid", "barcelona", "marbella",
+      "italy", "rome", "milan",
+      "netherlands", "amsterdam",
+      "united arab emirates", "uae", "dubai", "abu dhabi",
+      "qatar", "doha", "saudi arabia", "riyadh"
+    ],
+    "tier4_international_patterns": [
+      "_comment_only — example DROPPED regions. Move an entry up to tier2_international_patterns to start surfacing it.",
+      "china", "japan", "korea", "south korea", "north korea",
+      "india", "pakistan", "bangladesh",
+      "russia", "belarus", "ukraine",
+      "afghanistan", "iraq", "iran", "syria", "yemen", "libya", "somalia",
+      "venezuela", "haiti",
+      "shanghai", "beijing", "tokyo", "seoul",
+      "mumbai", "delhi", "new delhi", "bangalore", "bengaluru",
+      "moscow", "kyiv", "kabul", "baghdad", "tehran"
+    ],
+    "_tier4_state_doc": "Optional hard-exclude for regions you won't consider (matched by name and by short code). Empty by default — add entries if you want to drop a region.",
+    "tier4_state_patterns": [],
+    "tier4_state_codes": []
+  },
+  "comp_relo_floor": {
+    "_comment": "Total-comp gate for tier 3 cities (any city not in tier 1/2/4). Postings classified T3 are excluded unless comp_high >= total_usd. Missing comp_high = excluded (can't confirm it clears).",
+    "total_usd": 250000
+  },
+
+  "title_signals": {
+    "_comment": "Titles that bias toward Strong Fit even with thin keyword matches in the description. Replace with the titles you're actually targeting.",
+    "strong_titles": [
+      "close protection officer", "close protection operative", "cpo",
+      "executive protection agent", "executive protection specialist",
+      "protective services agent", "protection officer",
+      "residential security team", "rst operative",
+      "security driver", "protective security detail",
+      "security manager", "regional security manager", "country security manager",
+      "head of security", "director of security", "head of executive protection",
+      "intelligence officer", "field intelligence officer", "intelligence analyst",
+      "surveillance operative", "investigator", "field investigator",
+      "maritime security officer", "security consultant", "security risk consultant"
+    ]
+  },
+
+  "seed_company_slugs": {
+    "_comment": "ILLUSTRATIVE public job-board slugs. These ATS adapters (Greenhouse / Lever / Ashby / Workable) skew tech-employer, where close-protection roles are rare — so for a physical-security search these are placeholders to show the shape, not a yielding source. Replace this list with the boards YOUR target employers actually use. A slug is the company identifier in a public board URL (e.g. job-boards.greenhouse.io/<slug>/...). SAFETY: add a slug only after you've seen its public board URL in your own browser — never by probing a board tenant-by-tenant. See README 'OpSec'.",
+    "greenhouse": [
+      "example-security-firm",
+      "example-risk-advisory"
+    ],
+    "lever": [
+      "example-protective-services"
+    ],
+    "ashby": [
+      "example-global-security"
+    ],
+    "_workable_doc": "Workable public widget shortcodes. SAFETY: add a slug here only after you have seen a posting in the wild whose URL begins with apply.workable.com/{slug}/ — never by probing apply.workable.com tenant-by-tenant. See README 'OpSec'.",
+    "workable": [
+      "example-security-consultancy"
+    ]
+  },
+
+  "_workday_targets_doc": "Each entry = one company's Workday tenant. SAFETY: the host MUST also be added to _ALLOWED_WORKDAY_HOSTS in scripts/hunt_aggregate.py (a deliberate two-file diff per addition so it shows up in review). verified_url is the public, browser-confirmed URL that justified adding the tenant. Discovery flow: search the company careers page in your own browser, copy the resulting URL, and extract host/tenant/workspace from it. NEVER guess workspace names by trial-and-error against a tenant — see README 'OpSec'. Empty in this themed example; add your own browser-confirmed tenants.",
+  "workday_targets": [],
+
+  "_icims_targets_doc": "Each entry = one company's iCIMS careers portal. SAFETY: the host MUST also be added to _ALLOWED_ICIMS_HOSTS in scripts/hunt_aggregate.py (deliberate two-file diff per addition). verified_url is the public, browser-confirmed URL that justified adding the customer. iCIMS scrapes are HTML-based and list output is title-only — descriptions/locations require click-through. Discover the same way as Workday: copy the URL from your own browser, never probe. See README 'OpSec'. Empty in this themed example; add your own browser-confirmed customers.",
+  "icims_targets": [],
+
+  "sources": {
+    "greenhouse": { "enabled": true, "timeout_seconds": 15 },
+    "lever":      { "enabled": true, "timeout_seconds": 15 },
+    "ashby":      { "enabled": true, "timeout_seconds": 30 },
+    "workable":   { "enabled": true, "timeout_seconds": 15 },
+    "adzuna": {
+      "enabled": true,
+      "country": "gb",
+      "timeout_seconds": 20,
+      "max_pages": 3,
+      "_frequency_doc": "Adzuna free tier = 1000 req/month. frequency_days=7 throttles to weekly cadence (~108 req/month worst case, ~10% of budget). State lives in data/adzuna_state.json (gitignored). Set to 1 for daily runs ONLY if you've upgraded to a paid plan. Other values: 14=biweekly, 30=monthly.",
+      "frequency_days": 7,
+      "_queries_doc": "Each query = one Adzuna search. Free tier is 1000 req/month; worst case here is 9 queries x 3 pages = 27 req/day -> ~810/month. Dedup by Adzuna job id across queries. 'what' is the keyword string; 'where' + 'distance' (miles) creates a geo radius; 'salary_min' filters at the API. Tune by adding/removing queries — narrow ones (e.g. head of security) get longer max_days_old. The geo queries widen capture beyond the remote/UK-wide stream; change 'where' to your home metro. (country is 'gb' to match the persona's UK base.)",
+      "queries": [
+        { "what": "close protection officer",          "salary_min": 35000, "max_days_old": 14 },
+        { "what": "executive protection",               "salary_min": 35000, "max_days_old": 14 },
+        { "what": "security manager",                    "salary_min": 45000, "max_days_old": 14 },
+        { "what": "regional security manager",           "salary_min": 55000, "max_days_old": 21 },
+        { "what": "head of security",                    "salary_min": 70000, "max_days_old": 21 },
+        { "what": "intelligence analyst",                "salary_min": 40000, "max_days_old": 21 },
+        { "what": "close protection", "where": "London", "distance": 40, "salary_min": 35000, "max_days_old": 21 },
+        { "what": "security manager",  "where": "London", "distance": 40, "salary_min": 45000, "max_days_old": 21 }
+      ]
+    },
+    "workday": {
+      "enabled": true,
+      "timeout_seconds": 20,
+      "limit": 50,
+      "_search_texts_doc": "Each string = one POST per target. Empty string '' returns all open roles (fine for small workspaces, expensive for big ones). Narrow keyword strings cut response size and filter at the source. Workday's searchText does substring match on title + description server-side.",
+      "search_texts": ["security", "protection", "intelligence"]
+    },
+    "icims": {
+      "enabled": true,
+      "timeout_seconds": 20,
+      "offer_limit": 100,
+      "_search_texts_doc": "Each string = one GET per target. Empty string '' returns the first offer_limit jobs (full title scan). Narrow keyword strings filter server-side. iCIMS list HTML carries title + URL only — locations and descriptions show on click-through.",
+      "search_texts": ["security", "protection"]
+    },
+    "remoteok":   { "enabled": true, "timeout_seconds": 15, "tag_filter": ["security"] },
+    "hn_hiring":  { "enabled": true, "timeout_seconds": 15, "remote_only": true }
+  }
+}

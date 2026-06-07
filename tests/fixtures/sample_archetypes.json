@@ -1,0 +1,23 @@
+{
+  "_doc": "Synthetic archetype config for tests/test_resume_compose.py. All content is fake and names no real person; do not propagate to real applications. Keeps the golden-file test independent of the shipped config/archetypes.json persona.",
+  "default_archetype": "test-archetype",
+  "intro_default": "Generic professional summary fallback for the composer golden fixture.",
+  "domain_order_default": ["endpoint", "leadership"],
+  "domains": {
+    "endpoint": {
+      "label": "Endpoint Security",
+      "skills": "Synthetic endpoint skills line for the composer golden fixture."
+    },
+    "leadership": {
+      "label": "Leadership & Communication",
+      "skills": "Synthetic leadership skills line for the composer golden fixture."
+    }
+  },
+  "archetypes": {
+    "test-archetype": {
+      "_label": "Test Archetype",
+      "intro": "Synthetic test intro for the composer golden-file fixture. Names no real person and references no real company.",
+      "domain_order": ["endpoint", "leadership"]
+    }
+  }
+}

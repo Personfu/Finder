@@ -1,0 +1,73 @@
+{
+  "_doc": "Synthetic fixture canon for tests/test_resume_compose.py. All values are fake; do not propagate to real applications.",
+  "schema_version": 1,
+
+  "personal": {
+    "name": "Test Candidate",
+    "location": "Anytown, US 00000",
+    "phone": "555-000-0000",
+    "email_personal": "test.candidate@example.com",
+    "email_security": "test@example.org"
+  },
+
+  "education": [
+    {
+      "school": "Test University",
+      "location": "Anytown, US",
+      "degree": "BS Test Field",
+      "dates": "2010 – 2014",
+      "honors": ["Test Honor Society"]
+    }
+  ],
+
+  "employment": [
+    {
+      "id": "role_alpha",
+      "company": "Alpha Corp",
+      "location": "Anytown, US (Remote)",
+      "title": "Senior Tester",
+      "start": "2020-03",
+      "end": "present"
+    },
+    {
+      "id": "role_beta",
+      "company": "Beta Inc",
+      "location": "Othertown, US",
+      "title": "Junior Tester",
+      "start": "2018-01",
+      "end": "2020-02"
+    }
+  ],
+
+  "references": [
+    {
+      "name": "Reference Person",
+      "title": "Test Role",
+      "company": "Reference Corp",
+      "email": "ref@example.com",
+      "phone_cell": "555-111-1111"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "Certified Tester",
+      "issuer": "Test Authority",
+      "status": "active"
+    },
+    {
+      "name": "Expired Cert",
+      "issuer": "Old Authority",
+      "status": "expired"
+    }
+  ],
+
+  "professional_activities": [
+    {
+      "name": "Test Society",
+      "role": "Member",
+      "dates": "2018 – present",
+      "description": "Quality engineering professional group"
+    }
+  ]
+}

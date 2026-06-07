@@ -1,0 +1,9 @@
+# Finder runtime dependencies
+#
+# Core pipeline (hunt, score, walk, apply_pipeline, resume_compose, tracker_sync,
+# tests) is pure stdlib — no install required for those.
+#
+# python-docx is needed ONLY by scripts/md_to_docx.py (markdown → DOCX rendering).
+# If you skip the DOCX step (markdown-only workflow, or use a different renderer),
+# you don't need this install.
+python-docx>=1.1.0

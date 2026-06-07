@@ -1,0 +1,17 @@
+{
+  "name": "finder",
+  "description": "Automated remote job hunt + resume-tailoring pipeline. CLI-only: /finder:hunt fetches and ranks postings from Greenhouse/Lever/Ashby/Workable/RemoteOK/HN against your fit model; /finder:walk prioritizes them interactively; /finder:apply drafts a tailored resume + cover letter packet; /finder:publish pushes to Google Drive + a tracker Sheet via gws-personal.",
+  "version": "0.2.0",
+  "author": {
+    "name": "SamG0ld"
+  },
+  "homepage": "https://github.com/SamG0ld/Finder",
+  "keywords": [
+    "job-search",
+    "resume",
+    "automation",
+    "obsidian",
+    "cli",
+    "ats"
+  ]
+}

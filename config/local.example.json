@@ -1,0 +1,16 @@
+{
+  "vault_path": "/path/to/your/obsidian/vault",
+  "python_cmd": "python",
+
+  "_master_resume_doc": "LEGACY FALLBACK. The primary resume source is now data/canon.json + data/skill_library/ (see docs/resume/strategy.md). master_resume_path is only used by apply_pipeline.py when (a) those data files are missing, or (b) --no-compose is passed explicitly. Safe to leave pointing at any markdown file as a fallback, or remove this key entirely if you trust the composer.",
+  "master_resume_path": "/path/to/your/master-resume.md",
+
+  "_publish_doc": "Used by /finder:publish (CLI-only, gws required). tracker_sheet_id is the spreadsheet ID where appended apply rows land — pull it from the Sheet URL. resume_template_doc_id is DEPRECATED by the upload-and-convert flow (the publish step now renders your packet to DOCX and uploads it to Drive, which auto-converts to a Google Doc); the key is kept only as a no-op legacy slot.",
+  "resume_template_doc_id": "",
+  "tracker_sheet_id": "REPLACE_WITH_YOUR_SHEET_ID",
+  "tracker_sheet_tab": "Sheet1",
+
+  "_adzuna_doc": "Free tier API key from https://developer.adzuna.com — 1000 reqs/month. Used by hunt_aggregate.py's Adzuna source to widen coverage into Fortune-500 / non-tech employers that don't run on Greenhouse/Lever/Ashby/Workable. Skip if you don't want global aggregator results.",
+  "adzuna_app_id": "REPLACE_WITH_YOUR_ADZUNA_APP_ID",
+  "adzuna_app_key": "REPLACE_WITH_YOUR_ADZUNA_APP_KEY"
+}

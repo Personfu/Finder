@@ -1,0 +1,119 @@
+{
+  "_doc": "Resume canon — copy to data/canon.json (gitignored) and replace every value with your own. Source-of-truth for resume content; drives scripts/resume_compose.py. This example is filled with a deliberately broad FICTIONAL persona (James Bond) to show one varied career tailored into many target roles. All contact details are fictional: phone numbers use Ofcom's 020 7946 0xxx range reserved for fiction, and emails use reserved example domains. PII lives in canon.json, not here.",
+  "schema_version": 1,
+
+  "personal": {
+    "name": "James Bond",
+    "location": "London, United Kingdom",
+    "phone": "+44 20 7946 0007",
+    "email_personal": "james.bond@example.com",
+    "email_security": "j.bond@universal-exports.example",
+    "_doc_email": "Composer defaults to email_security for resume contact lines. email_personal is the fallback. Rename these freely — they're just two addresses."
+  },
+
+  "education": [
+    {
+      "school": "University of Geneva",
+      "location": "Geneva, Switzerland",
+      "degree": "MA Oriental Languages",
+      "concentration": "Russian and Japanese",
+      "dates": "1991 – 1995",
+      "gpa_major": "First Class",
+      "honors": ["First Class Honours", "University Pistol Team Captain"]
+    }
+  ],
+
+  "employment": [
+    {
+      "_doc": "id is the canonical role identifier — it MUST match the role_id frontmatter in data/skill_library/<id>.md.",
+      "id": "instructor",
+      "company": "Fort Monckton Field Training",
+      "location": "Gosport, UK (Hybrid)",
+      "title": "Senior Field-Craft & Firearms Instructor",
+      "start": "2021-07",
+      "end": "present"
+    },
+    {
+      "id": "universal_exports",
+      "company": "Universal Exports Ltd",
+      "location": "London, UK",
+      "title": "Regional Director (commercial cover for field operations)",
+      "start": "2015-01",
+      "end": "2021-06"
+    },
+    {
+      "id": "mi6_field",
+      "company": "Secret Intelligence Service (MI6)",
+      "location": "London, UK",
+      "title": "Field Intelligence Officer, 00 Section",
+      "start": "2001-09",
+      "end": "2014-12",
+      "_doc_dates": "Use YYYY-MM. 'present' is the special value for a currently-held role."
+    },
+    {
+      "id": "royal_navy",
+      "company": "Royal Navy",
+      "location": "Portsmouth, UK",
+      "title": "Commander",
+      "start": "1995-06",
+      "end": "2001-08"
+    }
+  ],
+
+  "references": [
+    {
+      "_doc": "Optional. Composer omits the References section unless --include-references is passed.",
+      "name": "Miles Messervy",
+      "title": "Director",
+      "company": "Secret Intelligence Service",
+      "email": "m@example.gov",
+      "phone": "+44 20 7946 0010"
+    },
+    {
+      "name": "Bill Tanner",
+      "title": "Chief of Staff",
+      "company": "Secret Intelligence Service",
+      "email": "w.tanner@example.gov",
+      "phone": "+44 20 7946 0011"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "Advanced & Evasive Driving Certification",
+      "issuer": "Royal Automobile Club",
+      "status": "active",
+      "_doc_status": "active | expired. Only active certs surface in the composed resume."
+    },
+    {
+      "name": "Combat Diver Qualification",
+      "issuer": "Royal Navy",
+      "status": "active"
+    },
+    {
+      "name": "Certified Sommelier",
+      "issuer": "Court of Master Sommeliers",
+      "status": "active"
+    },
+    {
+      "name": "Private Pilot Licence (Helicopter)",
+      "issuer": "Civil Aviation Authority",
+      "status": "active"
+    }
+  ],
+
+  "professional_activities": [
+    {
+      "_doc": "Clubs, memberships, speaking, awards. Composer emits these in the Activities section.",
+      "name": "Blades Club, London",
+      "role": "Member",
+      "dates": "2003 – present",
+      "description": "Private members' club; high-stakes bridge and baccarat"
+    },
+    {
+      "name": "Royal Yacht Squadron",
+      "role": "Member",
+      "dates": "1998 – present"
+    }
+  ]
+}
